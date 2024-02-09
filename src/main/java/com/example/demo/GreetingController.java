@@ -3,12 +3,13 @@ package com.example.demo;
 import static java.lang.System.out;
 
 import java.util.concurrent.atomic.AtomicLong;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@Controller()
 public class GreetingController {
 
   private static final String template = "Hello, %s!";
@@ -20,8 +21,10 @@ public class GreetingController {
   }
 
   @GetMapping("/greeting")
-  public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
-    return new Greeting(counter.incrementAndGet(), String.format(template, name));
+  public String greeting(@RequestParam(value = "name", defaultValue = "World") String name,
+      Model model) {
+    model.addAttribute("name", name);
+    return "greeting";
   }
 
 
@@ -33,8 +36,9 @@ public class GreetingController {
   }
 
   @GetMapping("/greetings-java-config")
-  public Greetings greetingWithJavaConfig(@RequestParam(required = false, defaultValue = "World") String name) {
+  public Greetings greetingWithJavaConfig(
+      @RequestParam(required = false, defaultValue = "World") String name) {
     out.println("==== in greeting ====");
     return new Greetings(counter.incrementAndGet(), String.format(template, name));
-}
+  }
 }

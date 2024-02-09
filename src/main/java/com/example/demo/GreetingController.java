@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import static java.lang.System.out;
+
 import java.util.concurrent.atomic.AtomicLong;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,7 +28,13 @@ public class GreetingController {
   @CrossOrigin(origins = "http://localhost:9000")
   @GetMapping("greetings")
   public Greetings greetings(@RequestParam(required = false, defaultValue = "World") String name) {
-    System.out.println("==== get greeting ====");
+    out.println("==== get greeting ====");
     return new Greetings(counter.incrementAndGet(), String.format(template, name));
   }
+
+  @GetMapping("/greetings-java-config")
+  public Greetings greetingWithJavaConfig(@RequestParam(required = false, defaultValue = "World") String name) {
+    out.println("==== in greeting ====");
+    return new Greetings(counter.incrementAndGet(), String.format(template, name));
+}
 }

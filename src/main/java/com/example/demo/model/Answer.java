@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -30,6 +31,7 @@ public class Answer {
   @UpdateTimestamp
   private LocalDateTime updatedAt;
 
+  @JsonBackReference
   @ManyToOne
   private Question question;
 }

@@ -5,7 +5,10 @@ import com.example.demo.model.Answer;
 import com.example.demo.model.Question;
 import com.example.demo.repository.AnswerRepository;
 import com.example.demo.repository.QuestionRepository;
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +28,7 @@ public class AnswerController {
     this.questionRepository = questionRepository;
   }
 
-  @PostMapping(path = "add")
+  @PostMapping(path = "/add")
   public Answer createAnswerToQuestion(@RequestParam Integer id,
       @RequestBody CreateAnswerReqDto createAnswerReqDto) {
     Optional<Question> partialQuestion = this.questionRepository.findById(id);
@@ -40,5 +43,16 @@ public class AnswerController {
 
     }
     return null;
+  }
+
+  // 질문 데이터를 통해 답변 데이터 찾기
+  @GetMapping(path = "/related")
+  public List<Answer> getAnswersOfQuestion(@RequestParam Integer id) {
+    Optional<Question> partialQuestion = this.questionRepository.findById(id);
+    if (partialQuestion.isPresent()) {
+      Question question = partialQuestion.get();
+      return question.getAnswerList();
+    }
+    return Collections.emptyList();
   }
 }

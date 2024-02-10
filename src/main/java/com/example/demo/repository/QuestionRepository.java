@@ -1,9 +1,11 @@
 package com.example.demo.repository;
 
 import com.example.demo.model.Question;
+import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 
 public interface QuestionRepository extends CrudRepository<Question, Integer> {
 
-  Iterable<Question> findBySubject(String subject);
+  List<Question> findBySubject(String subject);
+
 }

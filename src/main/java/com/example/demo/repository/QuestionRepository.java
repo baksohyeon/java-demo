@@ -5,5 +5,5 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface QuestionRepository extends CrudRepository<Question, Integer> {
 
-  Question findBySubject(String subject);
+  Iterable<Question> findBySubject(String subject);
 }

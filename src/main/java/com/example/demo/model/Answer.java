@@ -9,6 +9,8 @@ import jakarta.persistence.ManyToOne;
 import java.time.LocalDateTime;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 @Getter
 @Setter
@@ -22,7 +24,11 @@ public class Answer {
   @Column(columnDefinition = "TEXT")
   private String content;
 
+  @CreationTimestamp
   private LocalDateTime createdAt;
+
+  @UpdateTimestamp
+  private LocalDateTime updatedAt;
 
   @ManyToOne
   private Question question;

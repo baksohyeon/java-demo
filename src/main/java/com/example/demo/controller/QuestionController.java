@@ -25,6 +25,11 @@ public class QuestionController {
     return this.questionRepository.findBySubject(subject);
   }
 
+  @GetMapping(path = "/like")
+  public List<Question> getQuestionBySubjectLike(@RequestParam String subject) {
+    return this.questionRepository.findBySubjectLike(String.format("%s%%", subject));
+  }
+
 
   public QuestionController(QuestionRepository questionRepository) {
     this.questionRepository = questionRepository;

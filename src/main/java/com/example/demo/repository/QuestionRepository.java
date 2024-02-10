@@ -8,4 +8,6 @@ public interface QuestionRepository extends CrudRepository<Question, Integer> {
 
   List<Question> findBySubject(String subject);
 
+  List<Question> findBySubjectLike(String subject);
+
 }

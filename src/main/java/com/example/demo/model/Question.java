@@ -11,6 +11,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 @Getter
 @Setter
@@ -27,7 +29,11 @@ public class Question {
   @Column(columnDefinition = "TEXT")
   private String content;
 
+  @CreationTimestamp
   private LocalDateTime createdAt;
+
+  @UpdateTimestamp
+  private LocalDateTime updatedAt;
 
   @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE)
   private List<Answer> answerList;

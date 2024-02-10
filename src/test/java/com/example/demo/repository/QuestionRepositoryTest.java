@@ -1,6 +1,7 @@
 package com.example.demo.repository;
 
-import com.example.demo.model.Question;
+import com.example.demo.question.model.Question;
+import com.example.demo.question.QuestionRepository;
 import java.time.LocalDateTime;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

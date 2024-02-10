@@ -1,5 +1,6 @@
-package com.example.demo.model;
+package com.example.demo.answer.model;
 
+import com.example.demo.question.model.Question;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

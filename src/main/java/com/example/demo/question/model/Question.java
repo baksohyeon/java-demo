@@ -1,5 +1,6 @@
-package com.example.demo.model;
+package com.example.demo.question.model;
 
+import com.example.demo.answer.model.Answer;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;

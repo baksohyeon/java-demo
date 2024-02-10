@@ -1,10 +1,9 @@
-package com.example.demo.controller;
+package com.example.demo.answer;
 
-import com.example.demo.dto.CreateAnswerReqDto;
-import com.example.demo.model.Answer;
-import com.example.demo.model.Question;
-import com.example.demo.repository.AnswerRepository;
-import com.example.demo.repository.QuestionRepository;
+import com.example.demo.answer.dto.CreateAnswerReqDto;
+import com.example.demo.answer.model.Answer;
+import com.example.demo.question.model.Question;
+import com.example.demo.question.QuestionRepository;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;

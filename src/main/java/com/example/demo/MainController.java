@@ -21,6 +21,7 @@ public class MainController {
   @PostMapping(path = "/add")
   public @ResponseBody String addNewUser(@RequestParam String name, @RequestParam String email) {
     // @ResponseBody means the returned String is the response, not a view name
+    // @ResponseBody 애너테이션을 생략한다면 스프링 부트는 문자열을 리턴하는 대신 index라는 이름의 템플릿 파일을 찾게 된다.
     // @RequestParam means it is a parameter from the GET or POST request
     User user = new User();
     user.setName(name);

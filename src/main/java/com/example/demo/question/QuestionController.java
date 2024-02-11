@@ -2,7 +2,8 @@ package com.example.demo.question;
 
 import com.example.demo.question.dto.CreateQuestionReqDto;
 import com.example.demo.question.dto.UpdateQuestionReqDto;
-import com.example.demo.question.model.Question;
+import com.example.model.Question;
+import com.example.repository.QuestionRepository;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.web.bind.annotation.DeleteMapping;

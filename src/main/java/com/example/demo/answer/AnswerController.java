@@ -29,7 +29,7 @@ public class AnswerController {
 
   // 질문 데이터를 통해 답변 데이터 찾기
   @GetMapping(path = "/related")
-  public List<Answer> getAnswersOfQuestion(@RequestParam Integer id) {
-    return this.answerService.getAnswersOfQuestion(id);
+  public List<Answer> getAnswersOfQuestion(@RequestParam Integer questionId) {
+    return this.answerService.getAnswersOfQuestion(questionId);
   }
 }

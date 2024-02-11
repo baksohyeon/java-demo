@@ -1,6 +1,7 @@
-package com.example.demo.question;
+package com.example.demo.domain.Question;
 
-import com.example.demo.Question.dto.CreateQuestionReqDto;
+import com.example.demo.question.QuestionRepository;
+import com.example.demo.question.dto.CreateQuestionReqDto;
 import com.example.demo.question.dto.UpdateQuestionReqDto;
 import com.example.demo.question.model.Question;
 import java.util.List;
@@ -18,7 +19,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(path = "question")
 public class QuestionController {
 
-  private final com.example.demo.question.QuestionRepository questionRepository;
+  private final QuestionRepository questionRepository;
+
+  public QuestionController(QuestionRepository questionRepository) {
+    this.questionRepository = questionRepository;
+  }
 
 
   @GetMapping(path = "/all")
@@ -33,13 +38,11 @@ public class QuestionController {
 
   @GetMapping(path = "/like")
   public List<Question> getQuestionBySubjectLike(@RequestParam String subject) {
-    return this.questionRepository.findBySubjectLike(String.format("%s%%", subject));
+    return this.questionRepository.findBySubjectLike(String.format("%%%s%%", subject));
   }
 
   @PostMapping("/post")
-  public Question createQuestion(
-      @RequestBody CreateQuestionReqDto reqDto
-  ) {
+  public Question createQuestion(@RequestBody CreateQuestionReqDto reqDto) {
     Question question = new Question();
     question.setSubject(reqDto.getSubject());
     question.setContent(reqDto.getContent());
@@ -70,10 +73,5 @@ public class QuestionController {
       this.questionRepository.delete(question);
     }
     return "ok";
-  }
-
-
-  public QuestionController(com.example.demo.question.QuestionRepository questionRepository) {
-    this.questionRepository = questionRepository;
   }
 }

@@ -1,7 +1,7 @@
 package com.example.demo.answer;
 
 import com.example.demo.answer.dto.CreateAnswerReqDto;
-import com.example.model.Answer;
+import com.example.demo.answer.model.Answer;
 import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;

@@ -1,11 +1,9 @@
 package com.example.demo.answer;
 
-
 import com.example.demo.answer.dto.CreateAnswerReqDto;
-import com.example.model.Answer;
-import com.example.repository.AnswerRepository;
-import com.example.repository.QuestionRepository;
-import com.example.model.Question;
+import com.example.demo.answer.model.Answer;
+import com.example.demo.question.QuestionRepository;
+import com.example.demo.question.model.Question;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -21,11 +19,11 @@ public class AnswerService {
   private final QuestionRepository questionRepository;
 
   @Autowired
-  public AnswerService(AnswerRepository answerRepository,
-      QuestionRepository questionRepository) {
+  public AnswerService(AnswerRepository answerRepository, QuestionRepository questionRepository) {
     this.answerRepository = answerRepository;
     this.questionRepository = questionRepository;
   }
+
 
   public Answer createAnswerToQuestion(@RequestParam Integer id,
       @RequestBody CreateAnswerReqDto createAnswerReqDto) {

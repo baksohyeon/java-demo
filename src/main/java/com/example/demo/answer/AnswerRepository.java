@@ -1,6 +1,6 @@
-package com.example.repository;
+package com.example.demo.answer;
 
-import com.example.model.Answer;
+import com.example.demo.answer.model.Answer;
 import org.springframework.data.repository.CrudRepository;
 
 public interface AnswerRepository extends CrudRepository<Answer, Integer> {

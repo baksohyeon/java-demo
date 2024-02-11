@@ -3,6 +3,9 @@ spring:
     name: local
   profiles:
     active: local
+  mvc:
+    converters:
+      preferred-json-mapper: jackson
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: ${DATABASE_URL}

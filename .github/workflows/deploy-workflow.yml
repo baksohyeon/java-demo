@@ -39,8 +39,8 @@ jobs:
         run: |
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
           docker build -t app .
-          docker tag app ${{ secrets.DOCKER_USERNAME }}/sejongmate:latest
-          docker push ${{ secrets.DOCKER_USERNAME }}/sejongmate:latest
+          docker tag app ${{ secrets.DOCKER_USERNAME }}/java-demo-docker:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/java-demo-docker:latest
       - name: Deploy
         uses: appleboy/ssh-action@master
         with:
@@ -49,9 +49,9 @@ jobs:
           key: ${{ secrets.PRIVATE_KEY }} # pem 키
           # 도커 작업
           script: |
-            docker pull ${{ secrets.DOCKER_USERNAME }}/sejongmate:latest
+            docker pull ${{ secrets.DOCKER_USERNAME }}/java-demo-docker:latest
             docker stop $(docker ps -a -q)
-            docker run -d --log-driver=syslog -p 8080:8080 ${{ secrets.DOCKER_USERNAME }}/sejongmate:latest
+            docker run -d --log-driver=syslog -p 8080:8080 ${{ secrets.DOCKER_USERNAME }}/java-demo-docker:latest
             docker rm $(docker ps --filter 'status=exited' -a -q)
             docker image prune -a -f
             

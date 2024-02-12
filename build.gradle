@@ -12,7 +12,7 @@ java {
 }
 
 jar {
-    archiveFileName = "app.jar"
+    archiveFileName = "demo.jar"
 }
 
 repositories {
